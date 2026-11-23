@@ -1,26 +1,58 @@
 # Проект FitLife - MVP версия 1.0
 
 
-# 1. Знакомство
-# TODO: Спроси у пользователя имя и сохрани в переменную user_name
-# TODO: Спроси возраст и сохрани в переменную user_age (не забудь преобразовать в число)
+WATER_PER_KG = 30
+ML_TO_LITERS = 1000
 
 
-# 2. Сбор данных
-# TODO: Запроси вес (в кг) и сохрани в user_weight (тип float)
-# TODO: Запроси рост (в метрах, например 1.75) и сохрани в user_height (тип float)
+def get_user_weight():
+    """Возвращает вес (в кг)"""
+    while True:
+        try:
+            user_weight = float(
+                input("Какой у Вас вес? (в кг) ")
+            )
+            return user_weight
+        except ValueError:
+            print("Введите вес в кг, например 60.5")
 
 
-# 3. Логика расчетов (Функции как "черный ящик": используем арифметику)
-# Формула ИМТ: вес разделить на (рост в квадрате)
-# TODO: Рассчитай bmi (Индекс массы тела)
+def get_user_height():
+    """Возвращает рост (в м)"""
+    while True:
+        try:
+            user_height = float(
+                input("Какой у Вас рост? (в метрах) ")
+            )
+            return user_height
+        except ValueError:
+            print("Введите рост в метрах, например 1.75")
 
 
-# Подсчет воды: вес * 30 мл
-# TODO: Рассчитай water_needed
+# Знакомство
+user_name = input("Как Вас зовут? ")
+user_age_str = input("Сколько Вам лет? ")
+user_age = int(user_age_str)
 
 
-# 4. Вывод красивого результата
-# TODO: Используй f-строку, чтобы вывести приветствие, например: "Привет, Иван!"
-# TODO: Выведи возраст, ИМТ (округленный до 1 знака) и норму воды.
+# Сбор данных
+user_weight = get_user_weight()
+user_height = get_user_height()
+
+
+# расчёт индекса массы тела
+bmi = round(user_weight / (user_height ** 2), 1)
+
+
+# Подсчет воды
+water_ml = user_weight * WATER_PER_KG
+water_l = round(water_ml / ML_TO_LITERS, 1)
+
+
+# Вывод результата
+print("=========================================================")
+print(f"Отчет для пользователя: {user_name} ({user_age} г.)")
+print(f"Твой Индекс Массы Тела: {bmi}")
+print(f"Рекомендуемая норма воды: {water_l} л. в день")
+print()
 print("Расчет окончен. Будьте здоровы!")
