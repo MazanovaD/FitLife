@@ -9,10 +9,9 @@ def get_user_weight():
     """Возвращает вес (в кг)"""
     while True:
         try:
-            user_weight = float(
+            return float(
                 input("Какой у Вас вес? (в кг) ")
             )
-            return user_weight
         except ValueError:
             print("Введите вес в кг, например 60.5")
 
@@ -21,10 +20,9 @@ def get_user_height():
     """Возвращает рост (в м)"""
     while True:
         try:
-            user_height = float(
+            return float(
                 input("Какой у Вас рост? (в метрах) ")
             )
-            return user_height
         except ValueError:
             print("Введите рост в метрах, например 1.75")
 
