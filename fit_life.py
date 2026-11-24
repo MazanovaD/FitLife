@@ -28,7 +28,7 @@ def get_user_height():
 
 
 def get_user_age():
-    """Возвращает рост (в м)"""
+    """Возвращает возраст"""
     while True:
         try:
             return int(
